@@ -1,0 +1,47 @@
+{
+  "name": "@javiert.dev/yxtus",
+  "version": "1.0.0",
+  "description": "A plain text to HTML processor at a higher level",
+  "author": {
+    "name": "javiert.dev",
+    "email": "npm@javiert.dev",
+    "url": "https://javiert.dev"
+  },
+  "homepage": "https://github.com/javiertdev/jtYxtus/wiki",
+  "repository": "github:javiertdev/jtYxtus",
+  "license": "MIT",
+  "keywords": [
+    "jtyxtus",
+    "yxtus",
+    "typescript",
+    "javascript",
+    "library",
+    "utils",
+    "markdown",
+    "latex"
+  ],
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.js"
+    }
+  },
+  "scripts": {
+    "clear": "rm -rf ./dist",
+    "dev": "jtexec ./src/index.ts",
+    "build": "tsc && node ./pkgBuild.cjs",
+    "test": "ts-node test/test.ts",
+    "test:output": "ts-node test/test.ts > test/test-results.txt",
+    "publish:local": "npm run build && cd dist && npm publish --registry http://localhost:4873",
+    "publish:npm": "npm run build && cd dist && npm publish --access public",
+    "min": "browserify ./dist/index.js -o ./dist/jt.yxtus.bundle.js && uglifyjs ./dist/jt.yxtus.bundle.js -o ./dist/jt.yxtus.min.js"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "uglify-js": "^3.19.3"
+  }
+}
