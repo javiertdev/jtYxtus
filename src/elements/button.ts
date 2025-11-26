@@ -24,7 +24,8 @@ export const processButtons = (text: string): string => {
       return `<a href="${url}" download="${filename}" class="jt-yxtus jt-yxtus-button">${text}</a>`;
     } else if (action === 'copy') {
       // For copy, the URL contains the text to copy
-      return `<button onclick="navigator.clipboard.writeText('${url}')" class="jt-yxtus jt-yxtus-button">${text}</button>`;
+      const escapedUrl = url.replace(/'/g, "\\'").replace(/\\/g, '\\\\');
+      return `<button onclick="navigator.clipboard.writeText('${escapedUrl}')" class="jt-yxtus jt-yxtus-button">${text}</button>`;
     }
 
     // Fallback

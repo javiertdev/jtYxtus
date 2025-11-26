@@ -54,8 +54,12 @@ function processBlockquoteBlock(lines: string[]): string {
   const specialMatch = contentPart.match(/^\s*\[([^\]]+)\@([^\]]+)\]/);
 
   if (specialMatch) {
-    const type = specialMatch[1].replace(/^!/, '').toLowerCase();
+    const rawType = specialMatch[1];
+    let type = rawType.replace(/^!/, '').toLowerCase();
     const title = specialMatch[2];
+
+    // Sanitize type to prevent XSS - only allow alphanumeric, hyphens, and underscores
+    type = type.replace(/[^a-zA-Z0-9_-]/g, '');
 
     // Process title with inline formatting (no wrapping)
     let processedTitle = title;

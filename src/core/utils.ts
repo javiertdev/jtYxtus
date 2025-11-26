@@ -90,7 +90,9 @@ export const parseSize = (size: string): { width: string; height: string } => {
   if (size === '0x0') {
     return { width: '100%', height: '512' };
   }
-  const [width, height] = size.split('x');
+  // Sanitize: only allow digits and x
+  const sanitized = size.replace(/[^0-9x]/g, '');
+  const [width, height] = sanitized.split('x');
   return {
     width: width || '640',
     height: height || '480'
