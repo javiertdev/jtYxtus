@@ -1,4 +1,4 @@
-import iconCopy from '../icons/copy';
+import iconCopy from '../icons/copy.js';
 
 /**
  * Processes code block elements ```[n]language\ncode\n```
