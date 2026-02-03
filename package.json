@@ -36,12 +36,11 @@
     "test:output": "ts-node test/test.ts > test/test-results.txt",
     "publish:local": "npm run build && cd dist && npm publish --registry http://localhost:4873",
     "publish:npm": "npm run build && cd dist && npm publish --access public",
-    "min": "browserify ./dist/index.js -o ./dist/jt.yxtus.bundle.js && uglifyjs ./dist/jt.yxtus.bundle.js -o ./dist/jt.yxtus.min.js"
+    "min": "node esbuild.config.js"
   },
   "devDependencies": {
-    "browserify": "^17.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "uglify-js": "^3.19.3"
+    "esbuild": "^0.27.2"
   }
 }
